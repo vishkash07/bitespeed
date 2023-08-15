@@ -1,5 +1,7 @@
 package com.vishalbitespeed.bitespeed.service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +45,33 @@ public class ContactServiceImpl {
 
         return processContacts(email, phoneNumber, contacts, p);
 
+    }
+
+    private IdentificationResponse createNewContact(String email, String phoneNumber) {
+        Contact newContact = new Contact();
+        newContact.setEmail(email);
+        newContact.setPhoneNumber(phoneNumber);
+        newContact.setLinkPrecedence("primary");
+        newContact.setCreatedAt(LocalDateTime.now());
+        newContact.setUpdatedAt(LocalDateTime.now());
+        contactRepository.save(newContact);
+
+        List<String> emails = new ArrayList<>();
+        List<String> phoneNumbers = new ArrayList<>();
+        List<Long> secondaryContactIds = new ArrayList<>();
+
+        emails.add(newContact.getEmail());
+        phoneNumbers.add(newContact.getPhoneNumber());
+
+        return createResponse(newContact.getId(), emails, phoneNumbers, secondaryContactIds);
+    }
+
+    private IdentificationResponse createResponse(Long primaryContactId, List<String> emails, List<String> phoneNumbers,
+            List<Long> secondaryContactIds) {
+        return new IdentificationResponse(
+                primaryContactId,
+                emails,
+                phoneNumbers,
+                secondaryContactIds);
     }
 }
