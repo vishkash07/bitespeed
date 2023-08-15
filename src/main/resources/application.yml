@@ -1,12 +1,10 @@
-
 spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         username: root
-        url: 'jdbc:mysql://localhost:3306/prod'
-        password: prodpass
+        url: 'jdbc:mysql://containers-us-west-71.railway.app:7346/railway'
+        password: Q3XSueJIqLPRnlyU1pJv
     jpa:
         hibernate:
             ddl-auto: update
             show-sql: 'true'
-
