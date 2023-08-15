@@ -1,0 +1,12 @@
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        username: root
+        url: 'jdbc:mysql://localhost:3306/prod'
+        password: prodpass
+    jpa:
+        hibernate:
+            ddl-auto: update
+            show-sql: 'true'
+
