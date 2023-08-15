@@ -7,23 +7,23 @@ import com.vishalbitespeed.bitespeed.entity.Contact;
 
 public interface ContactRepository extends JpaRepository<Contact, Long> {
     // Custom query methods if needed
-    @Query(value = "SELECT * FROM vishalbitespeed.contact " +
-    "WHERE (vishalbitespeed.contact.email = :email OR vishalbitespeed.contact.phone_number = :phoneNumber ) " +
-    "OR (vishalbitespeed.contact.phone_number = :phoneNumber AND vishalbitespeed.contact.email IS NULL) " +
-    "OR (vishalbitespeed.contact.phone_number IN ( " +
+    @Query(value = "SELECT * FROM railway.contact " +
+    "WHERE (railway.contact.email = :email OR railway.contact.phone_number = :phoneNumber ) " +
+    "OR (railway.contact.phone_number = :phoneNumber AND railway.contact.email IS NULL) " +
+    "OR (railway.contact.phone_number IN ( " +
     "    SELECT phone_number " +
-    "    FROM vishalbitespeed.contact " +
+    "    FROM railway.contact " +
     "    WHERE email = :email " +
-    ")) OR (vishalbitespeed.contact.email IN ( " +
+    ")) OR (railway.contact.email IN ( " +
     "    SELECT email " +
-    "    FROM vishalbitespeed.contact " +
+    "    FROM railway.contact " +
     "    WHERE phone_number = :phoneNumber " +
-    "    ) AND  vishalbitespeed.contact.email IS NOT NULL AND vishalbitespeed.contact.email <> :email) " +
-    "OR (vishalbitespeed.contact.phone_number IN ( " +
+    "    ) AND  railway.contact.email IS NOT NULL AND railway.contact.email <> :email) " +
+    "OR (railway.contact.phone_number IN ( " +
     "    SELECT phone_number " +
-    "    FROM vishalbitespeed.contact " +
+    "    FROM railway.contact " +
     "    WHERE email = :email " +
-    "    ) AND  vishalbitespeed.contact.email IS NOT NULL AND vishalbitespeed.contact.phone_number <> :phoneNumber)",
+    "    ) AND  railway.contact.email IS NOT NULL AND railway.contact.phone_number <> :phoneNumber)",
 nativeQuery = true)
     List<Contact> findByEmailOrPhoneNumber(String email, String phoneNumber);
 
