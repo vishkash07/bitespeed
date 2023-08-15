@@ -19,6 +19,7 @@ public class ContactController {
     public ResponseEntity<IdentificationResponse> identifyContact(@RequestBody IdentificationRequest request) {
         IdentificationResponse response = contactService.identifyContact(request);
         if (response != null) {
+            
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.badRequest().build();
