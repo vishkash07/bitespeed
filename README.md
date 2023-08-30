@@ -1,5 +1,5 @@
 
-# Bitespeed Backend Task: Identity Reconciliation 
+# Backend Task: Identity Reconciliation 
 Java-based application that provides a streamlined solution for managing contact information. This system enables users to store and organize contact details, such as email addresses and phone numbers, and provides functionalities to efficiently handle primary and secondary contacts.
 
 
